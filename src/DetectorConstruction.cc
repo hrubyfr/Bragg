@@ -116,31 +116,44 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
     G4Exception("DetectorConstruction::DefineVolumes()",
       "MyCode0001", FatalException, msg);
   }
-
   //
   // World
   //
-  auto worldS = new G4Box("World", worldSizeXY/2, worldSizeXY/2, worldSizeZ/2);
+  auto worldS = new G4Box("World", worldSizeXY/2, worldSizeXY/2, worldSizeZ);
   auto worldLV = new G4LogicalVolume(worldS, WorldMaterial, "World");
-  auto worldPV = new G4PVPlacement(0, G4ThreeVector(), worldLV, "World", 0, false, 0, fCheckOverlaps);
+  auto worldPV = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), worldLV, "World", 0, false, 0, fCheckOverlaps);
+  //
+  // Box
+  //
+/*
+  auto BoxS = new G4Box ("Box", XYSize/2, XYSize/2, BoxThickness/2);
+  auto BoxLV = new G4LogicalVolume(BoxS, WorldMaterial, "Box");
+  auto BoxPV = new G4PVPlacement (0, G4ThreeVector(), BoxLV, "Box", worldLV, false, 0, fCheckOverlaps);
+*/
   //
   // Layer
   //
+
   auto layerS = new G4Box("Layer", XYSize/2, XYSize/2, LayerThickness/2);
   auto layerLV = new G4LogicalVolume(layerS, LayerMaterial, "Layer");
   for (G4int n = 0; n < DetectorConstruction::LayerNumber; n++){
     G4int copyN = 1000 + n;
-    blockArray[n] = new G4PVPlacement (0, G4ThreeVector(0, 0, n * LayerThickness), layerLV, "Layer", 0, false, copyN, fCheckOverlaps);
+    blockArray[n] = new G4PVPlacement (0, G4ThreeVector(0, 0, n * LayerThickness), layerLV, "Layer", worldLV, false, copyN, fCheckOverlaps);
+    G4cout << "layer number " << n << " constructed \n";
+
   }
 
   //
   // Visualization attributes
   //
-  worldLV->SetVisAttributes (G4VisAttributes::GetInvisible());
+
+  auto simpleWorldVisAtt = new G4VisAttributes(G4Colour(10.0, 10.0, 10.0));
+  simpleWorldVisAtt->SetVisibility(true);
+  worldLV->SetVisAttributes (simpleWorldVisAtt);
 
   auto simpleBoxVisAtt= new G4VisAttributes(G4Colour(1.0,1.0,1.0));
   simpleBoxVisAtt->SetVisibility(true);
-  layerLV->SetVisAttributes(simpleBoxVisAtt);
+  //layerLV->SetVisAttributes(simpleBoxVisAtt);
 
   //
   // Always return the physical World

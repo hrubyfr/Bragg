@@ -1,8 +1,8 @@
 /run/verbose 2
 /run/initialize /control/execute vis.ma/tracking/storeTrajectory 2
 /run/printProgress 100
-/gun/particle proton
-ate ! ! 600x600-0+0
+e OGL
+/vis/viewer/create ! ! 600x600-0+0
 /vis/viewer/refresh
 /vis/viewer/set/autoRefresh false
 /vis/verbose errors
@@ -51,6 +51,4 @@ ate ! ! 600x600-0+0
 /gui/addButton viewer "Flush viewer (= refresh + update)" "/vis/viewer/flush"
 /gui/addButton viewer "Update scene" "/vis/scene/notifyHandlers"
 /run/printProgress 100
-/run/beamOn 1
-/gun/particle proton
 /run/beamOn 1
