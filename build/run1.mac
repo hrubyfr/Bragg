@@ -1,0 +1,5 @@
+/run/numberOfThreads 2
+/run/initialize
+/gun/particle proton
+/run/beamOn 1
+

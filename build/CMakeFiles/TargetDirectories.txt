@@ -1,0 +1,7 @@
+/home/frantisek/G4/Bragg/build/CMakeFiles/install/strip.dir
+/home/frantisek/G4/Bragg/build/CMakeFiles/install/local.dir
+/home/frantisek/G4/Bragg/build/CMakeFiles/install.dir
+/home/frantisek/G4/Bragg/build/CMakeFiles/list_install_components.dir
+/home/frantisek/G4/Bragg/build/CMakeFiles/rebuild_cache.dir
+/home/frantisek/G4/Bragg/build/CMakeFiles/edit_cache.dir
+/home/frantisek/G4/Bragg/build/CMakeFiles/Bragg.dir
