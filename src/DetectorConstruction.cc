@@ -86,7 +86,7 @@ void DetectorConstruction::DefineMaterials()
 {
   // Lead material defined using NIST Manager
   auto nistManager = G4NistManager::Instance();
-  nistManager->FindOrBuildMaterial("G4_WATER");
+  nistManager->FindOrBuildMaterial("G4_POLYETHYLENE");
   nistManager->FindOrBuildMaterial("G4_Galactic");
 
   // Print materials
@@ -98,7 +98,7 @@ void DetectorConstruction::DefineMaterials()
 G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
 {
   // Geometry parameters
-  G4double LayerThickness = 1.*mm;
+  G4double LayerThickness = 1.*um;
   G4double XYSize  = 25.*cm;
 
   auto BoxThickness = DetectorConstruction::LayerNumber * LayerThickness;
@@ -106,7 +106,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   auto worldSizeZ  = 1.2 * BoxThickness;
 
   // Get materials
-  auto LayerMaterial = G4Material::GetMaterial("G4_WATER");
+  auto LayerMaterial = G4Material::GetMaterial("G4_POLYETHYLENE");
   auto WorldMaterial = G4Material::GetMaterial("G4_Galactic");
 
 
@@ -148,7 +148,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   //
 
   auto simpleWorldVisAtt = new G4VisAttributes(G4Colour(10.0, 10.0, 10.0));
-  simpleWorldVisAtt->SetVisibility(true);
+  simpleWorldVisAtt->SetVisibility(false);
   worldLV->SetVisAttributes (simpleWorldVisAtt);
 
   auto simpleBoxVisAtt= new G4VisAttributes(G4Colour(1.0,1.0,1.0));

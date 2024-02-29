@@ -1,9 +1,10 @@
 /run/verbose 2
 /run/initialize /control/execute vis.ma/tracking/storeTrajectory 2
 /run/printProgress 100
-e OGL
-/vis/viewer/create ! ! 600x600-0+0
-/vis/viewer/refresh
+/gun/particle ironion
+/gun/particle iron
+/gun/ion 26 56 3
+sh
 /vis/viewer/set/autoRefresh false
 /vis/verbose errors
 /vis/drawVolume
@@ -51,4 +52,12 @@ e OGL
 /gui/addButton viewer "Flush viewer (= refresh + update)" "/vis/viewer/flush"
 /gui/addButton viewer "Update scene" "/vis/scene/notifyHandlers"
 /run/printProgress 100
+/gun/particle ironion
+/gun/particle iron
+/particle/list
+/particle/list  ion
+/particle/list ion
+/particle/list ions
+/gun/ion 26 56 3
 /run/beamOn 1
+/gun/particle ion

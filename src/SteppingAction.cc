@@ -65,7 +65,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   auto edep = step->GetTotalEnergyDeposit();
   G4cout << "energy deposit at layer no. " << volID << " is " << edep << "\n";
 
-  if (1000 <= volID && volID < DetectorConstruction::LayerNumber) {
+  if (1000 <= volID && volID < 1000 + DetectorConstruction::LayerNumber) {
     fEdep->at(volID-1000) += edep;
   }
 

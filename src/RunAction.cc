@@ -62,7 +62,7 @@ RunAction::RunAction()
   //
 
   // Creating histograms
-  analysisManager->CreateH1("Eabs","Edep in wateer", DetectorConstruction::LayerNumber, 0., DetectorConstruction::LayerNumber);
+  analysisManager->CreateH1("Eabs","Edep in water", DetectorConstruction::LayerNumber, 0., DetectorConstruction::LayerNumber);
 
 }
 
